@@ -1,0 +1,9 @@
+#!/bin/bash
+DRV_NAME=rtl8821CU
+DRV_VERSION=5.2.5.3
+mkdir /usr/src/${DRV_NAME}-${DRV_VERSION}
+git archive master | sudo tar -x -C /usr/src/${DRV_NAME}-${DRV_VERSION}
+dkms add -m ${DRV_NAME} -v ${DRV_VERSION}
+dkms build -m ${DRV_NAME} -v ${DRV_VERSION}
+dkms install -m ${DRV_NAME} -v ${DRV_VERSION}
+
